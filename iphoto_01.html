@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhoto Gallery</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        #photos {
+            border: 1px solid #bebebe;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            width: 500px;
+        }
+        #photos ul {
+            left: 0;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            width: 2400px;
+        }
+        #photos li {
+            float: left;
+        }
+        #photos .trigger {
+            left: 0;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            text-indent: -9999px;
+            height: 500px;
+            width: 500px;
+            display: block;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+           
+            gallery.trigger = $("#photos .trigger");
+            gallery.content = $("#photos_inner");
+            gallery.scroll = false;
+            gallery.width = 500;
+            gallery.innerWidth = gallery.content.width();
+            gallery.timer = false;
+            gallery.init();
+        }) ;
+            const gallery = {};
+
+            gallery.offset = function() {
+                let left = gallery.content.position().left;
+                if (gallery.scroll == ">") {
+                    if (left < 0) {
+                        left += gallery.width;
+                    }
+                } else {
+                    if (left <= 0 && left >= ((gallery.innerWidth * -1) + (gallery.width * 2))) {
+                        left -= gallery.width;
+                    }
+                }
+                return left + "px";
+            }
+            gallery.slide = function() {
+                if (gallery.timer) {
+                    clearTimeout(gallery.timer);
+                }
+                if (gallery.scroll) {
+                    $(gallery.content)
+                    .stop(true,true)
+                    .animate({left: gallery.offset()}, 500);
+                    gallery.timer = setTimeout(gallery.slide, 1000);
+                }
+            }
+            gallery.direction = function(e,which) {
+                let x = e.pageX - which.offset().left;
+                gallery.scroll = (x >= gallery.width / 2) ? ">" : "<";
+            }
+            gallery.init = function() {
+                $(gallery.trigger)
+                .mouseout(function() {gallery.scroll = false})
+                .mousemove(function(e) {gallery.direction(e,gallery.trigger);})
+                .mouseover(function(e) {
+                    gallery.direction(e, gallery.trigger);
+                    gallery.slide();
+                });
+            }
+
+       
+    </script>
+</head>
+<body>
+    <h2>Memories are made of These</h2>
+    <div id="photos">
+        <a href="#" class="trigger">Image Gallery</a>
+        <ul id="photos_inner">
+            <li><img src="images/Joel_02_1_500.jpg"></li>
+            <li><img src="images/Joel_05_1_500.png"></li>
+            <li><img src="images/Joel_05_2_500.jpg"></li>
+            <li></li><img src="images/Joel_05_3_500.jpg"></li>
+            <li><img src="images/Joel_05_4_500.jpg"></li>
+            </li><img src="images/Joel_05_5_500.jpg"><li>
+            <li><img src="images/Joel_05_6_500.jpg"></li>
+            </li><img src="images/Joel_06_1_500.jpg"><li>
+            <li><img src="images/Joel_06_2_500.jpg"></li>
+            </li><img src="images/Joel_06_3_500.jpg"><li>
+            <li><img src="images/Joel_06_4_500.jpg"></li>
+            <li></li><img src="images/Joel_06_5_500.jpg"></li>
+            <li><img src="images/Joel_06_6_500.jpg"></li>
+            <li></li><img src="images/Joel_07_500.png"></li>
+        </ul>
+    </div>
+    
+</body>
+</html>
