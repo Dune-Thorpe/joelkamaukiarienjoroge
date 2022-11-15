@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle_Slideshow</title>
+
+    <style>
+        .cycle-slideshow {
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+        }
+        .center {
+            display: block;
+            padding-left: 200px;
+        }
+        
+    </style>
+
+    <!-- include jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <!-- include Cycle2 -->
+    <script src="/cycle2-master/build/jquery.cycle2.min.js"></script>
+    <script src="/cycle2-master/src/jquery.cycle2.flip.js"></script>
+    <script src="/cycle2-master/src/jquery.cycle2.carousel.js"></script>
+    <script src="/cycle2-master/src/jquery.cycle2.shuffle.js"></script>
+    <script src="/cycle2-master/src/jquery.cycle2.video.js"></script>
+</head>
+<body>
+   <!-- tileBlind -->
+   <div class="cycle-slideshow" 
+   data-cycle-fx=shuffle
+    data-cycle-timeout=2000
+    data-cycle-carousel-visible=0
+    >
+        <img src="images/Joel_02_1_500.jpg">
+        <img src="images/Joel_05_1_500.png">
+        <img src="images/Joel_05_2_500.jpg">
+        <img src="images/Joel_05_3_500.jpg">
+        <img src="images/Joel_05_4_500.jpg">
+        <img src="images/Joel_05_5_500.jpg">
+        <img src="images/Joel_05_6_500.jpg">
+        <img src="images/Joel_06_1_500.jpg">
+        <img src="images/Joel_06_2_500.jpg">
+        <img src="images/Joel_06_3_500.jpg">
+        <img src="images/Joel_06_4_500.jpg">
+        <img src="images/Joel_06_5_500.jpg">
+        <img src="images/Joel_06_6_500.jpg">
+        <img src="images/Joel_07_500.jpg">
+    </div>
+    <div class="center">
+        <a href=# id="prev5"> &lt;&lt; Prev</a> 
+        <a href=# id="next5">  Next   &gt;&gt;</a>
+    </div>
+    <div class="cycle-slideshow"
+    data-cycle-fx=scrollHorz
+    data-cycle-timeout=0
+    data-cycle-prev=#prev
+    data-cycle-next=#next
+    data-cycle-auto-height="640:360"
+    data-cycle-slides=">a"
+    data-cycle-youtube=true
+    data-cycle-youtube-autostart=true
+    >
+    <a href="http://www.youtube.com/v/f7AU2Ozu8eo?version=3&hl=en_US&rel=0">Paul Irish</a>
+    <a href="http://www.youtube.com/v/seX7jYI96GE?version=3&hl=en_US&rel=0">Alex Russel</a>
+</div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroller Example</title>
+
+    <!-- include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- include scrollTo plugin -->
+    <script src="../../jquery.scrollTo-master/jquery.scrollTo-master/jquery.scrollTo.min.js"></script>
+      
+    <script>
+    $(document).ready(function(){
+      $('#pic_container').click(function(){
+        const numberOfPics = $(this).find('div > img').length;
+        let last = $(this).data("last");
+        let next = Math.floor(Math.random() * numberOfPics);
+        if (next == last) {
+          next = (next + 1) % numberOfPics;
+        }
+        $(this)
+        .data("last",next)
+          .scrollTo(
+            '#pic_scroller>img:eq(' + next + ')', {duration: 1000}
+          );
+      });
+    });
+    </script>
+
+    <style>
+      #pic_container {
+        overflow: hidden;
+        height: 500px;
+        width: 500px;
+        margin-bottom: 15px;
+      }
+      #pic_scroller {
+        height: 2500px;
+        width: 2500px;
+        overflow: hidden;
+      }
+      #pic_scroller img {
+        float: left;
+      }
+    </style>
+</head>
+<body>
+  <div id="pic_container">
+    <div id="pic_scroller">
+      <img src="images/Joel_02_1_500.jpg">
+        <img src="images/Joel_05_1_500.png">
+        <img src="images/Joel_05_2_500.jpg">
+        <img src="images/Joel_05_3_500.jpg">
+        <img src="images/Joel_05_4_500.jpg">
+        <img src="images/Joel_05_5_500.jpg">
+        <img src="images/Joel_05_6_500.jpg">
+        <img src="images/Joel_06_1_500.jpg">
+        <img src="images/Joel_06_2_500.jpg">
+        <img src="images/Joel_06_3_500.jpg">
+        <img src="images/Joel_06_4_500.jpg">
+        <img src="images/Joel_06_5_500.jpg">
+        <img src="images/Joel_06_6_500.jpg">
+        <img src="images/Joel_07_500.png">
+    </div>
+  </div>  
+</body>
+</html>
