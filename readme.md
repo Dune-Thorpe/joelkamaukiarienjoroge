@@ -3,3 +3,4 @@ mobile device such as a cellphone or tablet. The use case is any temporary engag
 cordination of wedding, funeral, graduation, christening etc. The idea is to cordinate the various
 activies and persons involved in the organization and delivery of the event from the initial
 announcement (e.g. of the birth) to the day of the scheduled event.
+ The app is a single page app (SPA) designed to be fully disposable on completion of the given task.
